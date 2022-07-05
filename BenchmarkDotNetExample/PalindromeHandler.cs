@@ -21,7 +21,7 @@ namespace BenchmarkDotNetExample
 
             var isTrue = value == invertWord;
 
-            return (isTrue);
+            return isTrue;
 
         }
 
@@ -37,7 +37,7 @@ namespace BenchmarkDotNetExample
 
             var isTrue = value == invertWord;
 
-            return (isTrue);
+            return isTrue;
 
         }
 
@@ -56,7 +56,7 @@ namespace BenchmarkDotNetExample
 
             var isTrue = value.Substring(0, half) == finalWord;
 
-            return (isTrue);
+            return isTrue;
         }
 
         [Benchmark]
@@ -74,7 +74,7 @@ namespace BenchmarkDotNetExample
 
             var isTrue = value.Substring(0, half) == finalWord;
 
-            return (isTrue);
+            return isTrue;
         }
     }
 }
