@@ -1,25 +1,28 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Mathematics;
 
 namespace BenchmarkDotNetExample
 {
     [MemoryDiagnoser]
+    [RankColumn(NumeralSystem.Arabic)]
     public class PalindromeHandler
     {
         //[Params("osso", "arara", "lucianoaonaicul", "lucianoonaicul", "luciano")]
         [Params("arara")]
-        public string value { get; set; }
+        public string Value { get; set; }
 
         [Benchmark]
+        //[Benchmark(Baseline = true)]
         public bool PalindromeV1()
         {
             var invertWord = "";
 
-            for (int i = value.Length - 1; i >= 0; i--)
+            for (int i = Value.Length - 1; i >= 0; i--)
             {
-                invertWord += value.Substring(i, 1);
+                invertWord += Value.Substring(i, 1);
             }
 
-            var isTrue = value == invertWord;
+            var isTrue = Value == invertWord;
 
             return isTrue;
 
@@ -30,12 +33,12 @@ namespace BenchmarkDotNetExample
         {
             var invertWord = "";
 
-            for (int i = value.Length - 1; i >= 0; i--)
+            for (int i = Value.Length - 1; i >= 0; i--)
             {
-                invertWord += value[i];
+                invertWord += Value[i];
             }
 
-            var isTrue = value == invertWord;
+            var isTrue = Value == invertWord;
 
             return isTrue;
 
@@ -44,17 +47,17 @@ namespace BenchmarkDotNetExample
         [Benchmark]
         public bool PalindromeV3()
         {
-            var mod = value.Length % 2;
-            var half = value.Length / 2;
+            var mod = Value.Length % 2;
+            var half = Value.Length / 2;
 
             var finalWord = "";
 
-            for (int i = value.Length - 1; i >= (half + mod); i--)
+            for (int i = Value.Length - 1; i >= (half + mod); i--)
             {
-                finalWord += value[i];
+                finalWord += Value[i];
             }
 
-            var isTrue = value.Substring(0, half) == finalWord;
+            var isTrue = Value.Substring(0, half) == finalWord;
 
             return isTrue;
         }
@@ -62,17 +65,17 @@ namespace BenchmarkDotNetExample
         [Benchmark]
         public bool PalindromeV4()
         {
-            var mod = value.Length % 2;
-            var half = value.Length / 2;
+            var mod = Value.Length % 2;
+            var half = Value.Length / 2;
 
             var finalWord = "";
 
-            for (int i = value.Length - 1; i >= (half + mod); i--)
+            for (int i = Value.Length - 1; i >= (half + mod); i--)
             {
-                finalWord += value.Substring(i, 1);
+                finalWord += Value.Substring(i, 1);
             }
 
-            var isTrue = value.Substring(0, half) == finalWord;
+            var isTrue = Value.Substring(0, half) == finalWord;
 
             return isTrue;
         }
